@@ -18,8 +18,5 @@ function addIngrediendts() {
 }
 
 function submitIngredients() {
-    const newIngredient = ingredientsInput.value;
-    ingredientsInput.value = "재료명을 입력하세요";
-
 
 }
