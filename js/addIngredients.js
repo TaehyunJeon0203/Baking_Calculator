@@ -1,6 +1,9 @@
 const addIngrediendtsArea = document.getElementById("addIngredientsArea");
 const addIngrediendtsBtn = document.getElementById("addIngredients");
 
+const INGRE_KEY = "ingredients";
+let ingres = [];
+
 addIngrediendtsBtn.addEventListener("click", addIngrediendts);
 
 function addIngrediendts() {
@@ -15,8 +18,29 @@ function addIngrediendts() {
     let submitIngredientsBtn = document.createElement('button');
     submitIngredientsBtn.innerText = "추가";
     addIngrediendtsArea.appendChild(submitIngredientsBtn);
+    submitIngredientsBtn.addEventListener("click", submitIngredients);
+}
+
+let ingreObj = new Object();
+
+function saveIngre() {
+    localStorage.setItem(INGRE_KEY, JSON.stringify())
 }
 
 function submitIngredients() {
+    const newIngre = ingredientsInput.value;
+    const newIngreWeight = ingredientsWeightInput.value;
+    const newIngreObj = {
+        name: newIngre,
+        weight: newIngreWeight,
+    };
+    ingres.push(newIngreObj);
+    saveIngre();
+}
 
+const savedIngre = localStorage.getItem(INGRE_KEY);
+
+if (savedIngre !== null) {
+    const parsedIngre = JSON.parse(savedIngre);
+    ingres = parsedIngre;
 }
