@@ -1,14 +1,22 @@
-document.querySelectorAll('ul.tabs li').addEventListener('click', clickBtn);
+document.querySelector('#tabBtn').addEventListener('click', clickBtn);
 
-function clickBtn() {
-	console.log("click");
-	console.log(this);
-	let tab_id = this.getAttribute('data-tab');
-	console.log("#" + tab_id);
+function clickBtn(e) {
+	e.preventDefault;
+	console.log(e.target);
+	
+	let tab_id = e.target.getAttribute('data-tab');
 
-	document.querySelector('ul.tabs li').classList.remove('current');
-	document.querySelector('.tab-content').classList.remove('current');
+	const tabsGroup = document.querySelectorAll('.tab-link');
+	const tabContentGroup = document.querySelectorAll('.tab-content');
+	console.log(tabsGroup);
 
-	this.classList.add('current');
+	tabsGroup.forEach(function(e) {
+		e.classList.remove('current');
+	})
+	tabContentGroup.forEach(function(e) {
+		e.classList.remove('current');
+	})
+
+	e.target.classList.add('current');
 	document.querySelector("#" + tab_id).classList.add('current');
 }
