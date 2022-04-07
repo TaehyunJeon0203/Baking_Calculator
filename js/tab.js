@@ -1,19 +1,14 @@
-$(document).ready(function(){
-	
-	$('ul.tabs li').click(function(){
-		var tab_id = $(this).attr('data-tab');
+document.querySelectorAll('ul.tabs li').addEventListener('click', clickBtn);
 
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
-s
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	})
+function clickBtn() {
+	console.log("click");
+	console.log(this);
+	let tab_id = this.getAttribute('data-tab');
+	console.log("#" + tab_id);
 
-})
+	document.querySelector('ul.tabs li').classList.remove('current');
+	document.querySelector('.tab-content').classList.remove('current');
 
-document.querySelector('ul.tabs li').addEventListener('click', );
-
-function changeTab () {
-
+	this.classList.add('current');
+	document.querySelector("#" + tab_id).classList.add('current');
 }
